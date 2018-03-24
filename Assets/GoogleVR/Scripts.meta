@@ -1,14 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts.meta
-guid: 1ebf6a27255f16141ad8a6353a9b78a7
+guid: bb53cff76c328498e8c56b7f4c40eb85
 folderAsset: yes
-timeCreated: 1521900822
-=======
-guid: 81b64bc0c31e245f1a0bad113fde155c
-folderAsset: yes
-timeCreated: 1521861553
->>>>>>> master:Assets/GoogleVR/Scripts.meta
-licenseType: Free
 DefaultImporter:
   externalObjects: {}
   userData: 
