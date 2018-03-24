@@ -2,7 +2,7 @@ Android
 PlayerPath?
 /Users/johnathansaunders/Documents/GameJam/./Untitled.apk
 SceneListBegin?
-Assets/GoogleVR/Demos/Scenes/HelloVR.unity
+Assets/Scenes/Hangar.unity
 SceneListEnd?
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
