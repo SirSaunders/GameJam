@@ -14,7 +14,6 @@ public class Fractal : MonoBehaviour {
 
 	private static Vector3[] childDirections = { Vector3.up, Vector3.right, Vector3.left,Vector3.forward,Vector3.back };
 
-
 	private static Quaternion[] childOrientations = {
 		Quaternion.identity,
 		Quaternion.Euler (0f, 0f, -90f),
@@ -32,6 +31,7 @@ public class Fractal : MonoBehaviour {
 	private float rotationSpeed;
 
 	public float maxTwist;
+
 
 	private void InitializeMaterials(){
 		materials = new Material[maxDepth + 1, 2];
