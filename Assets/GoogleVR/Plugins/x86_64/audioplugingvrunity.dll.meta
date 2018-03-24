@@ -3,6 +3,7 @@ guid: 59177834662aa4ead89a6c07a4715165
 timeCreated: 1465328657
 licenseType: Pro
 PluginImporter:
+<<<<<<< HEAD
   externalObjects: {}
   serializedVersion: 2
   iconMap: {}
@@ -42,11 +43,27 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
+=======
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder: {}
+  isPreloaded: 1
+  platformData:
+    Android:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Any:
+      enabled: 0
+      settings: {}
+    Editor:
+>>>>>>> master
       enabled: 1
       settings:
         CPU: x86_64
         DefaultValueInitialized: true
         OS: Windows
+<<<<<<< HEAD
   - first:
       Facebook: Win
     second:
@@ -98,6 +115,45 @@ PluginImporter:
   - first:
       iPhone: iOS
     second:
+=======
+    Linux:
+      enabled: 0
+      settings:
+        CPU: None
+    Linux64:
+      enabled: 1
+      settings:
+        CPU: x86_64
+    LinuxUniversal:
+      enabled: 0
+      settings:
+        CPU: x86_64
+    OSXIntel:
+      enabled: 0
+      settings:
+        CPU: None
+    OSXIntel64:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    OSXUniversal:
+      enabled: 0
+      settings:
+        CPU: x86_64
+    SamsungTV:
+      enabled: 0
+      settings:
+        STV_MODEL: STANDARD_13
+    Win:
+      enabled: 0
+      settings:
+        CPU: None
+    Win64:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    iOS:
+>>>>>>> master
       enabled: 0
       settings:
         CompileFlags: 
