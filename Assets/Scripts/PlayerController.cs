@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour{
-
+	public Vector3 lastPosition;
 	// Use this for initialization
 	void Start () {
-		
+		this.lastPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -23,8 +23,23 @@ public class PlayerController : MonoBehaviour{
 		float yRotation = Camera.main.transform.eulerAngles.y;
 		transform.eulerAngles = new Vector3( transform.eulerAngles.x, yRotation, transform.eulerAngles.z );
 		transform.Translate(x, 0, z);
+		if (collisionDetected() && lastPosition != null) {
+			transform.position = lastPosition;
+		}
+		this.lastPosition = transform.position;
 		//Camera.main.transform.position = transform.position;
 
 
+	}
+
+	bool collisionDetected()
+	{
+		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+		if (Physics.Raycast (transform.position, fwd, 1)) {
+			Debug.Log ("There is something in front of the object!");
+			return true;
+		}
+		return false;
 	}
 }
