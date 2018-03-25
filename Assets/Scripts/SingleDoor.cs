@@ -7,8 +7,8 @@ public class SingleDoor : MonoBehaviour {
 	private int state = 0;
 	public float openCount = 0;
 	private float previousTime = 0;
-	private Vector3[] closed = new Vector3[2];
-	private Vector3[] open = new Vector3[2];
+	private Vector3 open1;
+	private Vector3 open2;
 	private Vector3 door1;
 	private Vector3 door2;
 
@@ -17,10 +17,8 @@ public class SingleDoor : MonoBehaviour {
 		door1 = GetComponentsInChildren<Transform> () [1].position;
 		door2 = GetComponentsInChildren<Transform> () [2].position;
 
-		closed [0] = new Vector3 (transform.position.x + .825f, 0f, transform.position.z + 0f);
-			closed[1]  = new Vector3 (transform.position.x + -.825f, 0f,transform.position.z +  0f) ;
-		open [0] = new Vector3 (transform.position.x + 2.475f, 0f, transform.position.z + .1f);
-		open[1] = new Vector3 (transform.position.x + -2.475f, 0f,transform.position.z +  .1f) ;
+		open1 = new Vector3 (door1.x + 2.475f, 0f, door1.z + .1f);
+		open2 = new Vector3 (door2.x - 2.475f, 0f, door1.z + .1f);
 	}
 	
 	// Update is called once per frame
@@ -41,26 +39,26 @@ public class SingleDoor : MonoBehaviour {
 			break;
 		case 1:
 			Transform[] transforms = this.GetComponentsInChildren<Transform> ();
-			if (transforms [1].position.x >= open [0].x || transforms [2].position.x <= open [1].x) {
+			if (transforms [1].position.x >= open1.x || transforms [2].position.x <= open1.x) {
 				state = (state + 1) % 4;
 				openCount = Time.fixedTime;
 			} else {
-				transforms [1].position = new Vector3 (transforms [1].position.x + (1.65f / Time.deltaTime), transforms [1].position.y, transforms [1].position.z + (.1f / Time.deltaTime));
-				transforms [2].position = new Vector3 (transforms [2].position.x + (-1.65f / Time.deltaTime), transforms [2].position.y, transforms [2].position.z + (.1f / Time.deltaTime)); 
+				transforms [1].position = open1;
+				transforms [2].position = open2;
 			}
 			break;
 		case 2:
 			Debug.Log (Time.fixedTime );
 			Debug.Log (openCount );
 			Debug.Log (Time.fixedTime - openCount);
-			if(Time.fixedTime - openCount  > 10){
+			if(Time.fixedTime - openCount  > 5){
 				state = (state + 1) % 4;
 				previousTime = Time.fixedTime;
 			}
 			break;
 		case 3:
 			Transform[] transforms2 = this.GetComponentsInChildren<Transform> ();
-			if (Time.fixedTime - previousTime  > 10 && ( transforms2 [1].position.x <= closed [0].x || transforms2 [2].position.x >= closed [1].x) ){
+			if (Time.fixedTime - previousTime  > 2 && ( transforms2 [1].position.x <= door1.x || transforms2 [2].position.x >= door2.x) ){
 				state = (state + 1) % 4;
 			} else {
 				transforms2 [1].position = door1;
