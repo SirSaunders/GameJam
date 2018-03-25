@@ -49,7 +49,7 @@ public class InLevelTeleport : MonoBehaviour {
 
 	void telportPlayer(int telNum){
 		Debug.Log ("tel to: " + telNum);
-		int telTo = Random.Range (0, 3);
+		int telTo = Random.Range (0, 4);
 			if(telTo+1 == telNum){
 			telportPlayer (telNum); 
 			}
@@ -65,6 +65,9 @@ public class InLevelTeleport : MonoBehaviour {
 			break;
 		case 3:
 			transportPlayer(tele4.transform.position);		
+			break;
+		case 4:
+			telportPlayer( telNum);
 			break;
 		}
 	}
