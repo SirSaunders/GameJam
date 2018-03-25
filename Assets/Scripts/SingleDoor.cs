@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SingleDoor : MonoBehaviour {
 
@@ -14,8 +15,8 @@ public class SingleDoor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		door1 = GetComponentsInChildren<Transform> () [1].position;
-		door2 = GetComponentsInChildren<Transform> () [2].position;
+		door1 = transform.Cast<Transform>().ToList() [0].position;
+		door2 = transform.Cast<Transform>().ToList() [1].position;
 
 		open1 = new Vector3 (door1.x + 2.475f, 0f, door1.z + .1f);
 		open2 = new Vector3 (door2.x - 2.475f, 0f, door1.z + .1f);
@@ -31,38 +32,39 @@ public class SingleDoor : MonoBehaviour {
 			GameObject[] people = GameObject.FindGameObjectsWithTag ("Person");
 			for (int i = 0; i < people.Length; i++) {
 				Vector3 person = people [i].transform.position;
-				if (Mathf.Abs (pos.x - person.x) < 5 && Mathf.Abs (pos.y - person.y) < 5) {
+				if (Mathf.Abs (pos.x - person.x) < 5 && Mathf.Abs (pos.z - person.z) < 5) {
 					state = (state + 1) % 4;
 					break;
 				}
 			}
 			break;
 		case 1:
-			Transform[] transforms = this.GetComponentsInChildren<Transform> ();
-			if (transforms [1].position.x >= open1.x || transforms [2].position.x <= open1.x) {
+			List<Transform> transforms = transform.Cast<Transform>().ToList();
+			//if (transforms [0].position.x >= open1.x || transforms [1].position.x <= open1.x) {
 				state = (state + 1) % 4;
 				openCount = Time.fixedTime;
-			} else {
-				transforms [1].position = open1;
-				transforms [2].position = open2;
-			}
+		//	} else {
+				transforms [0].position = open1;
+			transforms [1].position = open2;//open2;
+	//			Debug.Log(transforms [1].position);
+		//	}
 			break;
 		case 2:
-			Debug.Log (Time.fixedTime );
-			Debug.Log (openCount );
-			Debug.Log (Time.fixedTime - openCount);
+			Debug.Log (open1.x + ","+open1.y+","+open1.z);
+			Debug.Log (transform.Cast<Transform>().ToList()[0].position.x+","+transform.Cast<Transform>().ToList()[0].position.y+","+transform.Cast<Transform>().ToList()[0].position.z);
+			Debug.Log (door1.x+","+door1.y+","+door1.z);
 			if(Time.fixedTime - openCount  > 5){
 				state = (state + 1) % 4;
 				previousTime = Time.fixedTime;
 			}
 			break;
 		case 3:
-			Transform[] transforms2 = this.GetComponentsInChildren<Transform> ();
-			if (Time.fixedTime - previousTime  > 2 && ( transforms2 [1].position.x <= door1.x || transforms2 [2].position.x >= door2.x) ){
+			List<Transform> transforms2 = transform.Cast<Transform>().ToList();
+			if (Time.fixedTime - previousTime  > 2 && ( transforms2 [0].position.x <= door1.x || transforms2 [1].position.x >= door2.x) ){
 				state = (state + 1) % 4;
 			} else {
-				transforms2 [1].position = door1;
-				transforms2 [2].position = door2; 
+				transforms2 [0].position = door1;
+				transforms2 [1].position = door2; 
 			}
 			break;
 	}
