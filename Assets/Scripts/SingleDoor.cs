@@ -49,9 +49,9 @@ public class DoubleDoor : MonoBehaviour {
 		//	}
 			break;
 		case 2:
-			Debug.Log (open1.x + ","+open1.y+","+open1.z);
-			Debug.Log (transform.Cast<Transform>().ToList()[0].position.x+","+transform.Cast<Transform>().ToList()[0].position.y+","+transform.Cast<Transform>().ToList()[0].position.z);
-			Debug.Log (door1.x+","+door1.y+","+door1.z);
+			//Debug.Log (open1.x + ","+open1.y+","+open1.z);
+			//Debug.Log (transform.Cast<Transform>().ToList()[0].position.x+","+transform.Cast<Transform>().ToList()[0].position.y+","+transform.Cast<Transform>().ToList()[0].position.z);
+			//Debug.Log (door1.x+","+door1.y+","+door1.z);
 			if(Time.fixedTime - openCount  > 5){
 				state = (state + 1) % 4;
 				previousTime = Time.fixedTime;

@@ -24,29 +24,56 @@ public class InLevelTeleport : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		try{
+		
 			if (Time.fixedTime - openCount > 10) {
-				if (Mathf.Abs (tele1.transform.position.x - transform.position.x) < 1 && Mathf.Abs (tele1.transform.position.z - transform.position.z) < 1) {
-					this.transform.position = tele2.transform.position;
-					this.transform.rotation = tele2.transform.rotation;
+			Debug.Log (PlayerTracker.PlayerPostion.x);
+			Debug.Log (PlayerTracker.PlayerPostion.z);
+
+				if (Mathf.Abs (tele1.transform.position.x -PlayerTracker.PlayerPostion.x) < 1 && Mathf.Abs (tele1.transform.position.z -PlayerTracker.PlayerPostion.z) < 1) {
+					telportPlayer(1);
 					openCount = Time.fixedTime;
-				}else if (Mathf.Abs (tele2.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele1.transform.position.z - this.transform.position.z) < 1) {
-					this.transform.position = tele3.transform.position;
-					this.transform.rotation = tele3.transform.rotation;
+				}else if (Mathf.Abs (tele2.transform.position.x - PlayerTracker.PlayerPostion.x) < 1 && Mathf.Abs (tele2.transform.position.z - PlayerTracker.PlayerPostion.z) < 1) {
+					telportPlayer(2);
 					openCount = Time.fixedTime;
-				}else if (Mathf.Abs (tele3.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele3.transform.position.z - this.transform.position.z) < 1) {
-					this.transform.position = tele4.transform.position;
-					this.transform.rotation = tele4.transform.rotation;
+				}else if (Mathf.Abs (tele3.transform.position.x - PlayerTracker.PlayerPostion.x) < 1 && Mathf.Abs (tele3.transform.position.z - PlayerTracker.PlayerPostion.z) < 1) {
+					telportPlayer(3);
 					openCount = Time.fixedTime;
-				}else if (Mathf.Abs (tele4.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele4.transform.position.z - this.transform.position.z) < 1) {
-					this.transform.position = tele1.transform.position;
-					this.transform.rotation = tele1.transform.rotation;
+				}else if (Mathf.Abs (tele4.transform.position.x - PlayerTracker.PlayerPostion.x) < 1 && Mathf.Abs (tele4.transform.position.z - PlayerTracker.PlayerPostion.z) < 1) {
+					telportPlayer(4);
 					openCount = Time.fixedTime;
 				}	
 			}
-		}catch{
-				
+
+	}
+
+
+	void telportPlayer(int telNum){
+		Debug.Log ("tel to: " + telNum);
+		int telTo = Random.Range (0, 3);
+			if(telTo+1 == telNum){
+			telportPlayer (telNum); 
+			}
+		switch (telTo){
+		case 0:
+			transportPlayer(tele1.transform.position);		
+			break;
+		case 1:
+			transportPlayer(tele2.transform.position);		
+			break;
+		case 2:
+			transportPlayer(tele3.transform.position);		
+			break;
+		case 3:
+			transportPlayer(tele4.transform.position);		
+			break;
 		}
+	}
+
+	void transportPlayer(Vector3 position){
+		GameObject player = GameObject.Find ("/Player");
+		Debug.Log ("tel to: " + position);
+		player.transform.position = new Vector3(position.x,1,position.z);		
+
 	}
 }
 
