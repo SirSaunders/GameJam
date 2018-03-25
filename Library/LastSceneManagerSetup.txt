@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/HangarJohn.unity
-=======
-- path: Assets/Scenes/Steven.unity
->>>>>>> origin/AnotherNewBranch
   isLoaded: 1
   isActive: 1
