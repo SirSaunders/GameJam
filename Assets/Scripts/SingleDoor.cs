@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SingleDoor : MonoBehaviour {
+public class DoubleDoor : MonoBehaviour {
 
 	private int state = 0;
 	public float openCount = 0;
