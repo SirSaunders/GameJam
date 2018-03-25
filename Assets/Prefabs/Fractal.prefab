@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 220be9542fa0ca34b9b774c39b0781c8, type: 2}
+  material: {fileID: 2100000, guid: 220be9542fd0ca34b9b774c39b0781c8, type: 2}
   maxDepth: 3
   childScale: 0.5
   spawnProbability: 0.7

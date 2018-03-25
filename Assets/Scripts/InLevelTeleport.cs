@@ -24,24 +24,28 @@ public class InLevelTeleport : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.fixedTime - openCount > 10) {
-			if (Mathf.Abs (tele1.transform.position.x - transform.position.x) < 1 && Mathf.Abs (tele1.transform.position.z - transform.position.z) < 1) {
-				this.transform.position = tele2.transform.position;
-				this.transform.rotation = tele2.transform.rotation;
-				openCount = Time.fixedTime;
-			}else if (Mathf.Abs (tele2.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele1.transform.position.z - this.transform.position.z) < 1) {
-				this.transform.position = tele3.transform.position;
-				this.transform.rotation = tele3.transform.rotation;
-				openCount = Time.fixedTime;
-			}else if (Mathf.Abs (tele3.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele3.transform.position.z - this.transform.position.z) < 1) {
-				this.transform.position = tele4.transform.position;
-				this.transform.rotation = tele4.transform.rotation;
-				openCount = Time.fixedTime;
-			}else if (Mathf.Abs (tele4.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele4.transform.position.z - this.transform.position.z) < 1) {
-				this.transform.position = tele1.transform.position;
-				this.transform.rotation = tele1.transform.rotation;
-				openCount = Time.fixedTime;
-			}	
+		try{
+			if (Time.fixedTime - openCount > 10) {
+				if (Mathf.Abs (tele1.transform.position.x - transform.position.x) < 1 && Mathf.Abs (tele1.transform.position.z - transform.position.z) < 1) {
+					this.transform.position = tele2.transform.position;
+					this.transform.rotation = tele2.transform.rotation;
+					openCount = Time.fixedTime;
+				}else if (Mathf.Abs (tele2.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele1.transform.position.z - this.transform.position.z) < 1) {
+					this.transform.position = tele3.transform.position;
+					this.transform.rotation = tele3.transform.rotation;
+					openCount = Time.fixedTime;
+				}else if (Mathf.Abs (tele3.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele3.transform.position.z - this.transform.position.z) < 1) {
+					this.transform.position = tele4.transform.position;
+					this.transform.rotation = tele4.transform.rotation;
+					openCount = Time.fixedTime;
+				}else if (Mathf.Abs (tele4.transform.position.x - this.transform.position.x) < 1 && Mathf.Abs (tele4.transform.position.z - this.transform.position.z) < 1) {
+					this.transform.position = tele1.transform.position;
+					this.transform.rotation = tele1.transform.rotation;
+					openCount = Time.fixedTime;
+				}	
+			}
+		}catch{
+				
 		}
 	}
 }
